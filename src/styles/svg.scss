@@ -1,0 +1,100 @@
+@import '../rules/rules';
+
+.animation {
+    text-align: center;
+}
+
+.svg {
+    padding-left: 142px;
+}
+
+.fake {
+    display: none;
+}
+
+.button {
+    position: relative;
+    bottom: 54px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: $green-2;
+}
+
+.first-animation {
+    transform-origin: 37% 38%;
+    animation-name: first-animation;
+    animation-duration: 0.4s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes first-animation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(-70deg);
+    }
+}
+
+@keyframes return-first-animation {
+    from {
+        transform: rotate(-70deg);
+    }
+
+    to {
+        transform: rotate(0);
+    }
+}
+
+.second-animation {
+    transform-origin: 52% 48%;
+    animation-name: second-animation;
+    animation-duration: 0.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes second-animation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(175deg);
+    }
+}
+
+@keyframes return-second-animation {
+    from {
+        transform: rotate(175deg);
+    }
+
+    to {
+        transform: rotate(0);
+    }
+}
+
+.hat-animation {
+    transform-origin: 52% 28%;
+    animation-name: hat-animation;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hat-animation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(38deg);
+    }
+}

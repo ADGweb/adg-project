@@ -1,0 +1,44 @@
+{
+    "parser": "babel-eslint",
+    "rules": {
+        "no-unused-vars": "warn", // запрещает неиспользуемые переменные
+        "no-magic-numbers": "error", // запрещает магические числа
+        "no-empty-function": "warn", // запрет пустых функций
+        "camelcase": "error", // используется camelCasing
+        "indent": "error", // отступ по умолчанию 4 spaces
+        "eqeqeq": "warn", // использовать строгое равенство/неравенство
+        "no-redeclare": "error", // запрет повторного объявления переменной
+        "no-var": "warn", // использование var
+        //"space-in-parens": ["error", "never"], // запретить пробелы внутри круглых скобок
+        //"array-bracket-spacing": ["error", "never", { "objectsInArrays": false, "arraysInArrays": false }], // интервал внутри скобок массива
+        //"object-curly-spacing": ["error", "never"], // интервал внутри фигурных скобок
+        // Нет пробела между function и (
+        // Точка с запятой ставится в конце каждого выражения. Не ставится после блока
+        // Перед открытием блока всегда стоит пробел if(...) {...}
+        "space-unary-ops": ["error", {"words": true, "nonwords": false}], // отступы от операторов
+        "padded-blocks": ["error", "never"], // пустые строки внутри блока
+        "operator-linebreak": ["error", "before"], // стиль переноса кода
+        "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0, "maxEOF": 1}], // max количество пустых строк, строк в начале и конце
+        "new-cap": "error", // конструкторы с заглавной буквы
+        "max-depth": ["error", 4], // max вложенность блоков
+        "max-len": ["error", { "code": 120 }], // max длина строки
+        "no-multi-spaces": "error", // запрещает несколько пробелов
+        "comma-dangle": ["warn", "only-multiline"], // использование конечных запятых в литералах объектов и массивов
+        "comma-style": ["error", "last"], // запятые ставятся в конце текущей строки
+        "padding-line-between-statements": [ // пустые строки между елементами
+            "error",
+            { "blankLine": "always", "prev": "*", "next": "return" },
+            { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
+            { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
+            { "blankLine": "always", "prev": "*", "next": ["function", "if", "for", "while", "switch"] }
+        ]
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ]
+}

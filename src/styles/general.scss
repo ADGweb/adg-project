@@ -1,0 +1,35 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 60px;
+}
+
+.address {
+    padding: 12px;
+    border: 1px solid;
+    border-radius: 12px;
+
+    &__info {
+        margin: 0;
+    }
+}
+
+.logo {
+    margin: auto 0;
+}
+
+nav {
+    height: 48px;
+    background-color: $green-2;
+}
+
+main {
+    width: 996px;
+    margin: 90px auto 0;
+}
+
+footer {
+    height: 300px;
+    margin-top: 120px;
+    background-color: $green-2;
+}

@@ -1,0 +1,311 @@
+@import '../rules/rules';
+
+.body {
+    margin: 0;
+    background-color: $grey-2;
+}
+
+.tic-tac-toe {
+    text-align: center;
+
+    &__title {
+        color: $black-2;
+        letter-spacing: 2px;
+        font-size: 36px;
+        font-family: 'Schwabacher', sans-serif;
+    }
+
+    &__menu {
+        padding: 12px;
+        margin-bottom: 48px;
+        box-shadow: 0 8px 48px;
+
+        &_type {
+            &_desabled {
+                box-shadow: none;
+            }
+        }
+    }
+
+    &__select {
+        width: 150px;
+        height: 36px;
+        outline: none;
+        border: 2px solid $black-3;
+        border-radius: 5px;
+        color: $black-2;
+        font-size: 18px;
+        font-family: 'Schwabacher', sans-serif;
+        background-color: $grey-2;
+
+        &:hover {
+            background-color: $grey-1;
+        }
+
+        &_type {
+            &_desabled {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    &__option {
+        color: $black-2;
+    }
+
+    &__info-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 304px;
+        height: 60px;
+        margin: 24px auto 0;
+    }
+
+    &__button-start {
+        display: block;
+        width: 60px;
+        height: 60px;
+        outline: none;
+        border: 2px solid $black-3;
+        border-radius: 30px;
+        color: $black-2;
+        font-size: 18px;
+        font-family: 'Schwabacher', sans-serif;
+        box-shadow: 2px 2px 5px;
+        background-color: $grey-2;
+
+        &:hover {
+            background-color: $grey-1;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+
+        &_type {
+            &_desabled {
+                display: none;
+            }
+        }
+    }
+
+    &__difficulty-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 152px;
+        opacity: 0.5;
+
+        &_type {
+            &_active {
+                opacity: 1;
+            }
+
+            &_desabled {
+                display: none;
+            }
+        }
+    }
+
+    &__text-difficulty {
+        color: $black-2;
+        font-size: 18px;
+        font-family: 'Schwabacher', sans-serif;
+
+        &::after {
+            display: block;
+            width: 18px;
+            height: 18px;
+            margin: 6px auto;
+            border: 2px solid $black-3;
+            border-radius: 10px;
+            content: '';
+        }
+    }
+
+    &__difficulty {
+        display: none;
+    }
+
+    &__difficulty:checked + &__text-difficulty::after {
+        box-shadow: 0 0 4px;
+        background-color: $black-3;
+    }
+
+    &__info {
+        display: none;
+        position: relative;
+        top: 48px;
+        margin: 0;
+        font-size: 18px;
+        font-family: 'Schwabacher', sans-serif;
+
+        &_type {
+            &_active {
+                display: block;
+            }
+        }
+
+        &_gamer {
+            &_second {
+                margin-left: auto;
+            }
+        }
+    }
+
+    &__winning-text {
+        display: none;
+        position: relative;
+        top: 48px;
+        margin: 0;
+        letter-spacing: 2px;
+        font-weight: bold;
+        font-size: 24px;
+        font-family: 'Schwabacher', sans-serif;
+
+        &_type {
+            &_active {
+                display: block;
+                margin: auto;
+            }
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        width: 304px;
+        height: 304px;
+        padding: 12px;
+        margin: auto;
+        border: 2px solid $black-3;
+
+        &_type {
+            &_desabled {
+                opacity: 0.5;
+            }
+        }
+
+        &_style {
+            &_modern {
+                padding: 42px;
+                border-radius: 152px;
+            }
+
+            &_blindly {
+                border-radius: 24px;
+                background-color: $black-2;
+            }
+        }
+    }
+
+    &__cell {
+        width: 80px;
+        height: 80px;
+        margin: 6px;
+        box-shadow: 3px 3px 6px;
+        background-color: $grey-1;
+        background-size: cover;
+
+        &_type {
+            &_used {
+                box-shadow: none;
+            }
+
+            &_win {
+                box-shadow: 0 0 10px $yellow-2 !important;
+            }
+
+            &_active-classic {
+                &:hover {
+                    background-color: $white-3;
+                }
+            }
+
+            &_modern {
+                box-sizing: border-box;
+                width: 64px;
+                height: 64px;
+                margin: 4px;
+                border: 2px solid;
+                border-radius: 30px;
+                box-shadow: none;
+                background-color: $grey-2;
+            }
+
+            &_active-modern {
+                &:hover {
+                    border-color: $violet-2;
+                }
+            }
+
+            &_blindly {
+                width: 80px;
+                height: 80px;
+                margin: 6px;
+                background-size: cover;
+            }
+
+            &_active-blindly {
+                &:hover {
+                    background-color: $white-3;
+                }
+            }
+        }
+
+        &_style {
+            &_classic-x {
+                background-image: url('../assets/images/icons/classic-x.svg');
+            }
+
+            &_classic-o {
+                background-image: url('../assets/images/icons/classic-o.svg');
+            }
+
+            &_modern-x {
+                border: 0;
+                background-image: url('../assets/images/icons/modern-x.svg');
+            }
+
+            &_modern-o {
+                border: 0;
+                background-image: url('../assets/images/icons/modern-o.svg');
+            }
+
+            &_blindly-x {
+                background-color: $black-1;
+            }
+
+            &_blindly-o {
+                background-color: $black-1;
+            }
+        }
+    }
+
+    &__button-restart {
+        display: none;
+        width: 144px;
+        height: 48px;
+        margin: 24px auto;
+        border: 0;
+        border-radius: 5px;
+        font-size: 24px;
+        font-family: 'Schwabacher', sans-serif;
+        box-shadow: 2px 2px 5px;
+        background-color: $green-2;
+
+        &:hover {
+            background-color: $green-1;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+
+        &_type {
+            &_active {
+                display: block;
+            }
+        }
+    }
+}

@@ -7,7 +7,7 @@
     "indentation": 4,
     "max-nesting-depth": [3, {
       "ignore": ["pseudo-classes"],
-      "ignoreAtRules": ["media"]
+      "ignoreAtRules": ["media", "/^include/"]
     }],
     "order/order": [
 			"custom-properties",
@@ -53,6 +53,7 @@
         "flex-wrap",
         "justify-content",
         "align-items",
+        "align-content",
         "order",
         "float",
         "clear",

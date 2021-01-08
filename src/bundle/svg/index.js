@@ -1,2 +1,2 @@
-import '../../scripts/svg'
-import '../../styles/svg.scss'
+import '@/page-blocks/svg/svg'
+import '@/page-blocks/svg/svg.scss'

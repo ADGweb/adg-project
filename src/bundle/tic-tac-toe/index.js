@@ -1,2 +1,2 @@
-import '../../scripts/tic-tac-toe'
-import '../../styles/tic-tac-toe.scss'
+import '@/page-blocks/tic-tac-toe/tic-tac-toe'
+import '@/page-blocks/tic-tac-toe/tic-tac-toe.scss'

@@ -1,7 +1,13 @@
+@import '../rules/rules';
+
 header {
     display: flex;
     justify-content: space-between;
-    margin: 30px 60px;
+    margin: 30px 18px;
+
+    @include desktop-all {
+        margin: 30px 60px;
+    }
 }
 
 .address {
@@ -24,8 +30,12 @@ nav {
 }
 
 main {
-    width: 996px;
-    margin: 90px auto 0;
+    width: auto;
+
+    @include desktop-all {
+        max-width: 996px;
+        margin: 90px auto 0;
+    }
 }
 
 footer {

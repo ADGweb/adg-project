@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpuckPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpuckPlugin = require('terser-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -119,6 +120,12 @@ wolker('templates')
 htmlFiller()
 
 module.exports = {
+    resolve : {
+        extensions : ['.js'], // что бы в мпортах не писать разрешение файла
+        alias      : {
+            '@' : path.resolve( __dirname, 'src' ),
+        },
+    },
     context: contextPath,
     entry: entryFiller(),
     output: {
@@ -148,6 +155,12 @@ module.exports = {
             files: '**/*.(vue|html|css|scss)',
             configFile: '.stylelintrc.json',
         }),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, 'src/assets/images/favicons/favicon.ico'),
+                to: path.resolve(__dirname, 'dist/assets')
+            },
+        ]),
     ],
     module: {
         rules: [
@@ -184,7 +197,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
-                loader: 'file-loader',
+                loader: 'file-loader', // этот лоудер для использования картинок в css, scss и js
                 options: {
                     outputPath: 'assets',
                     publicPath: '/assets'

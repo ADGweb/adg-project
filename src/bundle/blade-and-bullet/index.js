@@ -1,1 +1,1 @@
-import '../../styles/tic-tac-toe.scss'
+import '@/page-blocks/tic-tac-toe/tic-tac-toe.scss'

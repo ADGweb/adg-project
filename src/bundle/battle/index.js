@@ -1,1 +1,1 @@
-import '../../scripts/test'
+import '@/page-blocks/battle/battle'

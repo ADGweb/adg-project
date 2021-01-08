@@ -1,4 +1,4 @@
-@import '../rules/rules';
+@import '../../rules/rules';
 
 .body {
     margin: 0;
@@ -255,21 +255,21 @@
 
         &_style {
             &_classic-x {
-                background-image: url('../assets/images/icons/classic-x.svg');
+                background-image: url('./classic-x.svg');
             }
 
             &_classic-o {
-                background-image: url('../assets/images/icons/classic-o.svg');
+                background-image: url('./classic-o.svg');
             }
 
             &_modern-x {
                 border: 0;
-                background-image: url('../assets/images/icons/modern-x.svg');
+                background-image: url('./modern-x.svg');
             }
 
             &_modern-o {
                 border: 0;
-                background-image: url('../assets/images/icons/modern-o.svg');
+                background-image: url('./modern-o.svg');
             }
 
             &_blindly-x {

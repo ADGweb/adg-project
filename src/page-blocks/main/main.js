@@ -1,4 +1,4 @@
-const button = document.querySelector('.button-test');
+const button = document.querySelector('.main__button-test');
 
 button.addEventListener('click', hi);
 

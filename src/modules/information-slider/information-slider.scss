@@ -1,0 +1,98 @@
+@import '../../rules/rules';
+
+.information-slider {
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+    margin: 0 18px;
+    box-shadow: $shadow-3;
+
+    @include desktop-all {
+        margin: 0;
+    }
+
+    &_type {
+        &_with-curtains {
+            &::before {
+                @include desktop-all {
+                    position: absolute;
+                    left: 24px;
+                    width: 158px;
+                    height: 300px;
+                    content: '';
+                    background-image: url('left-img.svg');
+                    background-repeat: no-repeat;
+                    animation: addCurtainsLeft 1s ease;
+                }
+            }
+
+            &::after {
+                @include desktop-all {
+                    position: absolute;
+                    top: 24px;
+                    right: 24px;
+                    width: 158px;
+                    height: 300px;
+                    content: '';
+                    background-image: url('right-img.svg');
+                    background-position-x: right;
+                    background-repeat: no-repeat;
+                    animation: addCurtainsRight 1s ease;
+                }
+            }
+        }
+    }
+
+    &__wrapper {
+        position: relative;
+
+        @include desktop-all {
+            max-width: 600px;
+            margin: auto;
+        }
+    }
+
+    &__slide {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.5s;
+
+        &_type_active {
+            opacity: 1;
+        }
+    }
+
+    &__button-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__link {
+        margin-top: 24px;
+        color: $blue-2;
+
+        &:hover {
+            color: $blue-1;
+        }
+    }
+}
+
+@keyframes addCurtainsLeft {
+    from {
+        left: -158px;
+    }
+
+    to {
+        left: 24px;
+    }
+}
+
+@keyframes addCurtainsRight {
+    from {
+        right: -158px;
+    }
+
+    to {
+        right: 24px;
+    }
+}

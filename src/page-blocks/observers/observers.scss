@@ -121,6 +121,25 @@
         animation: pulsing 2s linear infinite;
     }
 
+    &__images-wrapper {
+        margin-top: 120px;
+    }
+
+    &__image {
+        display: block;
+        width: 300px;
+        min-height: 120px;
+        margin: 30px auto;
+
+        @include mobile-l {
+            width: 600px;
+        }
+
+        @include desktop-all {
+            width: 600px;
+        }
+    }
+
     &__link {
         color: $blue-2;
 

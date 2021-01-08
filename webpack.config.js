@@ -15,6 +15,7 @@ const emptyArray = 0
 
 let bundlePaths = []
 let templatePaths = []
+let staticPaths = []
 let htmlPlugins = [
     new HTMLWebpackPlugin({
         minify: {
@@ -82,6 +83,26 @@ const htmlFiller = () => {
     })
 }
 
+const staticСollector = (dir) => {
+    const levels = fs.readdirSync(path.resolve(__dirname, `${contextPath}/${dir}`)).filter(el => !/\./.test(el))
+
+    if(levels.length !== emptyArray) {
+        levels.forEach(level => {
+            const statics = fs.readdirSync(path.resolve(__dirname, `${contextPath}/${dir}/${level}`))
+                .filter(el => /\./.test(el))
+
+            statics.forEach(el => {
+                staticPaths.push({
+                    from: path.resolve(__dirname, `${contextPath}/${dir}/${level}/${el}`),
+                    to: path.resolve(__dirname, 'dist/assets')
+                })
+            })
+
+            staticСollector(`${dir}/${level}`)
+        })
+    }
+}
+
 const optimization = () => {
     const config = {
         // splitChunks: {
@@ -118,6 +139,7 @@ const jsLoaders = () => {
 wolker('bundle')
 wolker('templates')
 htmlFiller()
+staticСollector('assets/static')
 
 module.exports = {
     resolve : {
@@ -155,12 +177,7 @@ module.exports = {
             files: '**/*.(vue|html|css|scss)',
             configFile: '.stylelintrc.json',
         }),
-        new CopyWebpackPlugin([
-            {
-                from: path.resolve(__dirname, 'src/assets/images/favicons/favicon.ico'),
-                to: path.resolve(__dirname, 'dist/assets')
-            },
-        ]),
+        new CopyWebpackPlugin(staticPaths),
     ],
     module: {
         rules: [

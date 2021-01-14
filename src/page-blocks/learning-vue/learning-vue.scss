@@ -1,0 +1,11 @@
+@import '@/rules/rules';
+
+.learning-vue {
+    &__link {
+        color: $blue-2;
+
+        &:hover {
+            color: $blue-1;
+        }
+    }
+}

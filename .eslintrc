@@ -1,6 +1,11 @@
 {
-    "parser": "babel-eslint",
-    "plugins": ["jest"],
+    //"parser": "babel-eslint", //"vue-eslint-parser",
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "sourceType": "module"
+    },
+    "plugins": ["jest", "vue"],
     "rules": {
         "no-unused-vars": "warn", // запрещает неиспользуемые переменные
         "no-magic-numbers": "error", // запрещает магические числа
@@ -32,7 +37,8 @@
             { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
             { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
             { "blankLine": "always", "prev": "*", "next": ["function", "if", "for", "while", "switch"] }
-        ]
+        ],
+        "vue/html-indent": ["warn", 4]
     },
     "env": {
         "es6": true,
@@ -41,6 +47,8 @@
         "jest": true
     },
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        //"plugin:vue/essential"
+        "plugin:vue/recommended"
     ]
 }

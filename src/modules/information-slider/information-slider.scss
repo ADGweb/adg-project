@@ -58,6 +58,7 @@
         transition: opacity 0.5s;
 
         &_type_active {
+            z-index: 1;
             opacity: 1;
         }
     }
@@ -65,10 +66,10 @@
     &__button-wrapper {
         display: flex;
         justify-content: center;
+        margin-top: 24px;
     }
 
     &__link {
-        margin-top: 24px;
         color: $blue-2;
 
         &:hover {

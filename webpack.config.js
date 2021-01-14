@@ -7,6 +7,7 @@ const OptimizeCssAssetsWebpuckPlugin = require('optimize-css-assets-webpack-plug
 const TerserWebpuckPlugin = require('terser-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -143,7 +144,7 @@ staticСollector('assets/static')
 
 module.exports = {
     resolve : {
-        extensions : ['.js'], // что бы в мпортах не писать разрешение файла
+        extensions : ['.js', '.vue'], // что бы в мпортах не писать разрешение файла
         alias      : {
             '@' : path.resolve( __dirname, 'src' ),
         },
@@ -178,29 +179,31 @@ module.exports = {
             configFile: '.stylelintrc.json',
         }),
         new CopyWebpackPlugin(staticPaths),
+        new VueLoaderPlugin(),
     ],
     module: {
         rules: [
-            /*{
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },*/
             {
                 test: /\.css$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: isDev,
-                            reloadAll: true
-                        },
-                    },
-                    'css-loader'
-                ]
+                use: ['vue-style-loader', 'style-loader', 'css-loader']
             },
+            // {
+            //     test: /\.css$/,
+            //     use: [
+            //         {
+            //             loader: MiniCssExtractPlugin.loader,
+            //             options: {
+            //                 hmr: isDev,
+            //                 reloadAll: true
+            //             },
+            //         },
+            //         'css-loader'
+            //     ]
+            // },
             {
                 test: /\.s[ac]ss$/,
                 use: [
+                    'vue-style-loader',
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
@@ -233,7 +236,13 @@ module.exports = {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: jsLoaders()
-            }
+            },
+            {
+                test: /\.vue$/,
+                use: isDev
+                    ? [ 'vue-loader', 'eslint-loader' ]
+                    : [ 'vue-loader' ]
+            },
         ]
     }
 }

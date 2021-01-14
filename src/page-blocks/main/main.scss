@@ -3,6 +3,14 @@
 .main {
     &__section {
         &_type {
+            &_title {
+                margin: 0 18px;
+
+                @include desktop-all {
+                    margin: 0;
+                }
+            }
+
             &_information-slider {
                 margin: 60px 0;
             }

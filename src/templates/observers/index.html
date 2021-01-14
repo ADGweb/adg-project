@@ -19,6 +19,9 @@
         <nav></nav>
         <main class="main">
             <section class="observers__section">
+                <h1>Observers</h1>
+            </section>
+            <section class="observers__section">
                 <h2>MutationObserver</h2>
                 <div class="observers__mutation-wrapper">
                     <div class="observers__test-box-wrapper">
@@ -34,7 +37,8 @@
                 </div>
             </section>
             <section class="observers__section">
-                <h3>Options</h3>
+                <h3>Config</h3>
+                <p>Передается вторым аргументом в метод .observe(element, config)</p>
                 <ul>
                     <li><strong>childList</strong> булево значение; наблюдать ли за изменениями за дочерними элементами этого элемента</li>
                     <li><strong>attributes</strong> булево значение; наблюдать ли за изменениями в атрибутах этого элемента</li>
@@ -58,6 +62,7 @@
             </section>
             <section class="observers__section">
                 <h2>Intersection Observer</h2>
+                <h3>Запуск анимации</h3>
                 <div class="observers__animation-wrapper">
                     <p class="observers__description">Описание: при скролле на 120px ниже блока, запустится анимация</p>
                     <div class="observers__animation">
@@ -75,6 +80,7 @@
             </section>
             <section class="observers__section">
                 <h3>Options</h3>
+                <p>Передается вторым аргументом при инициализации new IntersectionObserver(function(){...}, options)</p>
                 <ul>
                     <li>
                         <strong>root:</strong> Это корневой элемент, используемый для наблюдения. Он определяет базовую “область захвата” для
@@ -146,7 +152,7 @@
                 <p>self.unobserve(entry.target) - убираем слежку за элементом. Нужно, чтобы избавится от лишнего шума, когда элемент уже загружен</p>
                 <p>self.disconnect(entry.target) - полностью останавливает слежку (останавливает работу обсервера)</p>
             </section>
-            <section>
+            <section class="observers__section">
                 <a class="observers__link" href="../">На главную</a>
             </section>
         </main>

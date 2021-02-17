@@ -1,0 +1,27 @@
+@import '@/rules/rules';
+
+.learning-vue {
+    &__section {
+        margin: 0 18px;
+
+        @include desktop-all {
+            margin: 0;
+        }
+
+        &_type {
+            &_vue {
+                margin-top: 60px;
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+        margin: 24px 0;
+        color: $blue-2;
+
+        &:hover {
+            color: $blue-1;
+        }
+    }
+}

@@ -6,9 +6,9 @@ const vm = new Vue( {
 } );
 
 window.addEventListener( 'DOMContentLoaded' , () => {
-    const test = document.getElementById( 'learning-vue-app' );
+    const learningVue = document.getElementById( 'learning-vue-app' );
 
-    if ( test ) {
-        vm.$mount( test );
+    if ( learningVue ) {
+        vm.$mount( learningVue );
     }
 } );

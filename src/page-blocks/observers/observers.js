@@ -23,6 +23,14 @@ buttonAttribute.addEventListener('click', () => {
     testBox.style.backgroundColor = '#f8f4a0';
 })
 
+// Или прописывать style прям в html
+document.addEventListener('DOMContentLoaded', () => {
+    images.forEach( img => {
+        img.style.width = '60px';
+        img.style.height = '60px';
+    })
+})
+
 buttonElement.addEventListener('click', () => {
     const div = document.createElement('div');
 
@@ -43,11 +51,11 @@ buttonReturn.addEventListener('click', () => {
     mutationObserver.observe(textElements, config);
 })
 
-let deleteInformation = () => {
+const deleteInformation = () => {
     information.innerHTML = '';
 }
 
-let returnTestBox = () => {
+const returnTestBox = () => {
     testBox.removeAttribute('style');
     [...testBox.querySelectorAll('div')].forEach(div => {
         div.remove();
@@ -58,15 +66,15 @@ let returnTestBox = () => {
 
 // MutationObserver (Наблюдатель за изменениями в DOM)
 
-let addText = (recordqueue) => {
+const addText = (recordqueue) => {
     recordqueue.forEach(mutationRecord => {
         information.textContent = `Tип изменения: ${mutationRecord.type}`
     });
 }
 
-let mutationObserver = new MutationObserver(addText);
+const mutationObserver = new MutationObserver(addText);
 
-let config = {
+const config = {
     attributes: true,
     childList: true,
     characterData: true,
@@ -79,7 +87,7 @@ mutationObserver.observe(textElements, config);
 
 // Animation
 
-let addAnimation = (entries, self) => {
+const addAnimation = (entries, self) => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
             animationItem.classList.add('observers__animation-start');
@@ -100,16 +108,17 @@ const options = {
     threshold: 1
 };
 
-let intersictionObserverAnimation = new IntersectionObserver(addAnimation, options);
+const intersictionObserverAnimation = new IntersectionObserver(addAnimation, options);
 
 intersictionObserverAnimation.observe(animationBox);
 
 // Img
 
-let downloadImg = (entries, self) => {
+const downloadImg = (entries, self) => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
-            entry.target.src = entry.target.dataset.src
+            entry.target.removeAttribute('style');
+            entry.target.src = entry.target.dataset.src;
             self.unobserve(entry.target);
         }
     })
@@ -120,7 +129,7 @@ const downloadImgOptions = {
     threshold: 0
 };
 
-let intersictionObserverDownloadImg = new IntersectionObserver(downloadImg, downloadImgOptions);
+const intersictionObserverDownloadImg = new IntersectionObserver(downloadImg, downloadImgOptions);
 
 images.forEach(image => {
     intersictionObserverDownloadImg.observe(image);

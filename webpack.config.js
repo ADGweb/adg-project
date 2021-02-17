@@ -8,11 +8,11 @@ const TerserWebpuckPlugin = require('terser-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackInjector = require('html-webpack-injector')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 const contextPath = path.resolve(__dirname, 'src')
-const emptyArray = 0
 
 let bundlePaths = []
 let templatePaths = []
@@ -25,15 +25,17 @@ let htmlPlugins = [
         },
         template: './templates/index.html',
         filename: 'index.html',
-        chunks: ['main']
+        chunks: ['main', 'global_head']
     })
 ]
 
 const wolker = (dir) => {
-    let level = fs.readdirSync(path.resolve(__dirname, `${contextPath}/${dir}`)).filter(el => !/\./.test(el))
-    let filePaths = /bundle/.test(dir) ? bundlePaths : templatePaths
+    const level = fs.readdirSync(path.resolve(__dirname, `${contextPath}/${dir}`)).filter(el => {
+        return fs.statSync(path.resolve(__dirname, `${contextPath}/${dir}/${el}`)).isDirectory()
+    })
+    const filePaths = /bundle/.test(dir) ? bundlePaths : templatePaths
 
-    if(level.length !== emptyArray) {
+    if(level.length) {
         level.forEach(page => {
             filePaths.push({
                 nameDir: page,
@@ -57,7 +59,8 @@ const entryFiller = () => {
 const outputFiller = (chunkName, extension) => {
     if(chunkName === 'main') {
         return `bundle.[name].[hash].${extension}`
-    } else {
+    }
+    else {
         for(let index = 0; index < templatePaths.length; index++){
             let templatePath = templatePaths[index]
 
@@ -67,6 +70,8 @@ const outputFiller = (chunkName, extension) => {
             }
         }
     }
+
+    return `assets/bundle.[name].[hash].${extension}`
 }
 
 const htmlFiller = () => {
@@ -78,19 +83,21 @@ const htmlFiller = () => {
             },
             template: `./${htmlPath.path}/${htmlPath.nameDir}/index.html`,
             filename: `./${htmlPath.path}/${htmlPath.nameDir}/index.html`.replace(/templates\/?/, ''),
-            chunks: [`${htmlPath.nameDir}`]
+            chunks: [`${htmlPath.nameDir}`, 'global_head']
         })
         )
     })
 }
 
 const staticСollector = (dir) => {
-    const levels = fs.readdirSync(path.resolve(__dirname, `${contextPath}/${dir}`)).filter(el => !/\./.test(el))
+    const levels = fs.readdirSync(path.resolve(__dirname, `${contextPath}/${dir}`)).filter(el => {
+        return fs.statSync(path.resolve(__dirname, `${contextPath}/${dir}/${el}`)).isDirectory()
+    })
 
-    if(levels.length !== emptyArray) {
+    if(levels.length) {
         levels.forEach(level => {
             const statics = fs.readdirSync(path.resolve(__dirname, `${contextPath}/${dir}/${level}`))
-                .filter(el => /\./.test(el))
+                .filter(el => fs.statSync(path.resolve(__dirname, `${contextPath}/${dir}/${level}/${el}`)).isFile())
 
             statics.forEach(el => {
                 staticPaths.push({
@@ -144,7 +151,7 @@ staticСollector('assets/static')
 
 module.exports = {
     resolve : {
-        extensions : ['.js', '.vue'], // что бы в мпортах не писать разрешение файла
+        extensions : ['.js', '.vue'], // что бы в импортах не писать разрешение файла
         alias      : {
             '@' : path.resolve( __dirname, 'src' ),
         },
@@ -166,6 +173,7 @@ module.exports = {
     },
     plugins: [
         ...htmlPlugins,
+        new HtmlWebpackInjector(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: (pathData) => {

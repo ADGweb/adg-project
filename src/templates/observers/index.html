@@ -23,6 +23,7 @@
             </section>
             <section class="observers__section">
                 <h2>MutationObserver</h2>
+                <p>По нажатию кнопок MutationObserver будет отлавливать изменения в элементе и вызывать callback-функцию. Тип изменения будет показан.</p>
                 <div class="observers__mutation-wrapper">
                     <div class="observers__test-box-wrapper">
                         <div class="observers__test-box" contenteditable='true'>Измени текст</div>
@@ -72,9 +73,14 @@
                 <div class="observers__images-wrapper">
                     <h3>Ленивая загрузка</h3>
                     <p>Картинки будут подгружаться при пересечении viewport на 120px (для наглядности)</p>
-                    <img class="observers__image" data-src="../assets/observers__image-cat.jpg" alt="picture with cat">
-                    <img class="observers__image" data-src="../assets/observers__image-html.jpg" alt="picture about html and css">
-                    <img class="observers__image" data-src="../assets/observers__image-code.jpg" alt="picture with lion and monkey">
+                    <p>
+                        Картинки могут моргнуть, при обновлении страницы. Это из-за того что мне не захотелось заморачиваться с их размерами.
+                        Прошу не обращать внимания)) Этого можно избежать, если изночально затаскивать в проект картинки с нужным размером,
+                        а задавать размер в CSS.
+                    </p>
+                    <img class="observers__image" src="../assets/plug__head-with-glasses.svg" data-src="../assets/observers__image-cat.jpg" alt="picture with cat">
+                    <img class="observers__image" src="../assets/plug__head-with-glasses.svg" data-src="../assets/observers__image-html.jpg" alt="picture about html and css">
+                    <img class="observers__image" src="../assets/plug__head-with-glasses.svg" data-src="../assets/observers__image-code.jpg" alt="picture with lion and monkey">
                 </div>
 
             </section>

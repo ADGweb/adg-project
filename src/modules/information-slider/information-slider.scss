@@ -4,7 +4,6 @@
     position: relative;
     overflow: hidden;
     padding: 24px;
-    margin: 0 18px;
     box-shadow: $shadow-3;
 
     @include desktop-all {
@@ -71,9 +70,16 @@
 
     &__link {
         color: $blue-2;
+        cursor: default;
+        pointer-events: none;
 
         &:hover {
             color: $blue-1;
+        }
+
+        &_type_active {
+            cursor: pointer;
+            pointer-events: auto;
         }
     }
 }

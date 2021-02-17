@@ -53,4 +53,19 @@ const changeActiveSlide = (e) => {
             activeSlide.previousElementSibling.classList.add('information-slider__slide_type_active');
         }
     }
+
+    changeActiveLink(informationSlider.querySelector('.information-slider__slide_type_active'));
+}
+
+const changeActiveLink = (activeSlide) => {
+    const links = [...informationSlider.querySelectorAll('.information-slider__link')]
+    const activeLinks = [...activeSlide.querySelectorAll('.information-slider__link')]
+
+    links.forEach(link => {
+        link.classList.remove('information-slider__link_type_active');
+    })
+
+    activeLinks.forEach(link => {
+        link.classList.add('information-slider__link_type_active');
+    })
 }

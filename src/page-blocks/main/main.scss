@@ -2,41 +2,132 @@
 
 .main {
     &__section {
+        margin: 48px 18px;
+
+        @include desktop-all {
+            margin: 60px 0;
+        }
+
         &_type {
-            &_title {
-                margin: 0 18px;
+            &_information-slider {
+                padding-top: 12px;
+                margin-top: 36px;
 
                 @include desktop-all {
-                    margin: 0;
+                    padding-top: 24px;
+                    margin-top: 36px;
                 }
-            }
-
-            &_information-slider {
-                margin: 60px 0;
             }
         }
     }
 
-    &__button-test {
+    &__button-view {
         display: block;
-        width: 84px;
-        height: 36px;
-        margin: 0 auto 48px;
-        border-radius: 12px;
-        color: $white-1;
-        background-color: $grey-2;
+        padding: 12px;
+        margin-top: 36px;
+        margin-bottom: 48px;
+        border-radius: 6px;
+        color: $black-3;
+        background-color: $white-3;
         cursor: pointer;
 
         &:active {
-            background-color: $grey-1;
+            background-color: $white-2;
         }
     }
 
-    &__img {
-        max-width: 100%;
-        height: 403px;
-        margin: 0 auto;
-        background-image: url('./d.jpg');
-        background-size: cover;
+    &__title-welcome {
+        text-align: center;
+    }
+
+    &__welcome-svg {
+        width: 200px;
+        margin: auto;
+    }
+
+    &__svg-fake {
+        display: none;
+    }
+
+    &__svg-hand {
+        &_type {
+            &_first-animation {
+                transform-origin: 184px 198px;
+                animation-name: first-animation;
+                animation-duration: 0.4s;
+                animation-timing-function: linear;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+
+            &_second-animation {
+                transform-origin: 260px 250px;
+                animation-name: second-animation;
+                animation-duration: 0.6s;
+                animation-timing-function: linear;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+
+    &__svg-hat_type_animation {
+        transform-origin: 262px 144px;
+        animation-name: hat-animation;
+        animation-duration: 0.8s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 2;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+    }
+}
+
+@keyframes first-animation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(-70deg);
+    }
+}
+
+@keyframes return-first-animation {
+    from {
+        transform: rotate(-70deg);
+    }
+
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes second-animation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(175deg);
+    }
+}
+
+@keyframes return-second-animation {
+    from {
+        transform: rotate(175deg);
+    }
+
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes hat-animation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(38deg);
     }
 }

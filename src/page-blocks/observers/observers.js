@@ -35,7 +35,7 @@ buttonElement.addEventListener('click', () => {
     const div = document.createElement('div');
 
     deleteInformation();
-    testBox.append(div);
+    testBox.appendChild(div);
 })
 
 buttonText.addEventListener('click', () => {

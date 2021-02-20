@@ -1,0 +1,11 @@
+@mixin focus-outline-light {
+    &:focus {
+        outline: 3px solid $yellow-1;
+    }
+}
+
+@mixin focus-outline-dark {
+    &:focus {
+        outline: 3px solid $blue-2;
+    }
+}

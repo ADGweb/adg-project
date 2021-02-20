@@ -34,6 +34,8 @@
         &:active {
             background-color: $white-2;
         }
+
+        @include focus-outline-dark;
     }
 
     &__title-welcome {
@@ -79,6 +81,12 @@
         animation-iteration-count: 2;
         animation-direction: alternate;
         animation-fill-mode: forwards;
+    }
+
+    &__footer-botton {
+        margin: 48px;
+
+        @include focus-outline-light;
     }
 }
 

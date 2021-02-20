@@ -25,7 +25,7 @@ let htmlPlugins = [
         },
         template: './templates/index.html',
         filename: 'index.html',
-        chunks: ['main', 'global_head']
+        chunks: ['main', 'global', 'global_head']
     })
 ]
 
@@ -83,7 +83,7 @@ const htmlFiller = () => {
             },
             template: `./${htmlPath.path}/${htmlPath.nameDir}/index.html`,
             filename: `./${htmlPath.path}/${htmlPath.nameDir}/index.html`.replace(/templates\/?/, ''),
-            chunks: [`${htmlPath.nameDir}`, 'global_head']
+            chunks: [`${htmlPath.nameDir}`, 'global', 'global_head']
         })
         )
     })

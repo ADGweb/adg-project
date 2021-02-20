@@ -64,8 +64,37 @@
 
     &__button-wrapper {
         display: flex;
-        justify-content: center;
-        margin-top: 24px;
+        justify-content: space-between;
+        align-items: center;
+        width: 180px;
+        height: 60px;
+        margin: 18px auto 0;
+    }
+
+    &__button {
+        width: 62px;
+        height: 48px;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+
+        @include focus-outline-dark;
+    }
+
+    &__arrow {
+        width: 62px;
+        height: 48px;
+        stroke: $black-2;
+        fill: none;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+
+        &:active {
+            fill: $white-2;
+        }
     }
 
     &__link {
@@ -80,6 +109,8 @@
         &_type_active {
             cursor: pointer;
             pointer-events: auto;
+
+            @include focus-outline-dark;
         }
     }
 }

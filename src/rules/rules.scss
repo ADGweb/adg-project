@@ -1,5 +1,11 @@
 @import '~normalize.css';
+
+// global polyfills
+@import '../styles/focus-visible';
+
+// custom unit
 @import './breakpoints';
 @import './palette';
 @import './shadows';
+@import './focus-outline';
 //@import './fonts';

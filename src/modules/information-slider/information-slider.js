@@ -39,7 +39,7 @@ const changeActiveSlide = (e) => {
 
     activeSlide.classList.remove('information-slider__slide_type_active');
 
-    if (e === buttonNext) {
+    if (buttonNext.contains(e)) {
         if ( activeSlide === slidesWrapper.lastElementChild ) {
             slidesWrapper.firstElementChild.classList.add('information-slider__slide_type_active');
         } else {

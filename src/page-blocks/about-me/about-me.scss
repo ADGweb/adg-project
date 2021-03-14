@@ -1,1 +1,110 @@
 @import '@/rules/rules';
+
+.about-me {
+    &__section {
+        margin: 48px 18px;
+
+        @include desktop-all {
+            margin: 90px 0;
+        }
+    }
+
+    &__img-wrapper {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        margin: auto;
+
+        @include mobile-l {
+            margin: 0;
+        }
+
+        @include desktop-all {
+            margin: 0;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        width: 300px;
+        height: 400px;
+        cursor: pointer;
+        transition: transform 1s ease-out;
+        backface-visibility: hidden;
+
+        &_type {
+            &_front {
+                backface-visibility: hidden;
+            }
+
+            &_back {
+                background-color: $grey-3;
+            }
+        }
+    }
+
+    &__text {
+        font-size: 18px;
+
+        &_type {
+            &_date {
+                margin-bottom: 6px;
+                color: $grey-3;
+                font-style: italic;
+            }
+
+            &_dolgnost {
+                margin-top: 6px;
+            }
+        }
+    }
+
+    &__list {
+        margin-top: 18px;
+        font-size: 18px;
+    }
+
+    &__contacts-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        @include mobile-l {
+            flex-direction: row;
+        }
+
+        @include desktop-all {
+            flex-direction: row;
+        }
+    }
+
+    &__contacts {
+        @include mobile-l {
+            margin-left: 30px;
+        }
+
+        @include desktop-all {
+            margin-left: 60px;
+        }
+    }
+
+    &__work-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__img-regru {
+        @include desktop-all {
+            position: relative;
+            top: 18px;
+            left: 48px;
+            width: 121px;
+            height: 61px;
+            background-image: url('./regru.svg');
+            background-repeat: no-repeat;
+        }
+    }
+
+    &__duties {
+        margin: 24px 0 48px;
+    }
+}

@@ -19,13 +19,14 @@
                 @keyup.enter="alertValue"
             >
         </div>
-        <p>Без модификатора</p>
+        <p>Без модификатора (см. консоль)</p>
         <input
             type="text"
             @keyup="alertValue"
         >
         <div class="learning-vue__form">
-            <h2>Работа с формами</h2>
+            <h2>Работа с формами (v-model)</h2>
+            <p>Модификаторы событий можно комбинировать</p>
             <input
                 v-model.lazy.trim="inputValue"
                 type="text"
@@ -33,12 +34,14 @@
             <p>{{ inputValue }}</p>
         </div>
         <div class="learning-vue__form">
-            <p>Клик: isActive = !isActive</p>
+            <h2>Игра с классами</h2>
+            <h3>Клик: isActive = !isActive</h3>
             <div
                 class="learning-vue__circle"
                 :class="{'learning-vue__circle_style_red': isActive}"
                 @click="isActive = !isActive"
             />
+            <h3>v-model="color"</h3>
             <div
                 class="learning-vue__circle"
                 :class="color"
@@ -48,6 +51,7 @@
                 v-model="color"
                 type="text"
             >
+            <h3>v-model="color" и isActive = !isActive</h3>
             <div
                 class="learning-vue__circle"
                 :class="[otherColor, {'learning-vue__circle_style_green': isActive}]"
@@ -59,6 +63,7 @@
             >
         </div>
         <div class="learning-vue__form">
+            <h3>Изменить высоту</h3>
             <div
                 class="learning-vue__circle"
                 :style="{'height': height + 'px'}"
@@ -68,19 +73,6 @@
                 type="text"
             >
         </div>
-        <div>{{ qw }}</div>
-        <button
-            class="button-test"
-            @click="www"
-        >
-            Смена
-        </button>
-        <button
-            class="button-test"
-            @click="buttonClick"
-        >
-            Button
-        </button>
     </div>
 </template>
 
@@ -89,7 +81,6 @@ export default {
     name: 'LearningVue',
     data() {
         return {
-            qw: 'ssssqqqq',
             mod: 'Перейти на Google',
             x: 0,
             y: 0,
@@ -102,12 +93,6 @@ export default {
     },
 
     methods: {
-        www() {
-            this.qw = 'qwqwqwqwxcxc11111';
-        },
-        buttonClick() {
-            this.a = this.qw;
-        },
         clickOnGoogle() {
             this.mod = 'Переход на Googl отключено модификатором prevent'
         },
@@ -137,6 +122,7 @@ export default {
     }
 
     &__form {
+        padding: 12px;
         border: 1px solid $black-1;
     }
 

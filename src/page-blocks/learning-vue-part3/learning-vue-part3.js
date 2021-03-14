@@ -7,7 +7,7 @@ const vm = new Vue( {
     render : h => h( App ),
 } );
 
-window.addEventListener( 'DOMContentLoaded' , () => {
+document.addEventListener( 'DOMContentLoaded' , () => {
     const learningVue = document.getElementById( 'learning-vue-part3-app' );
 
     if ( learningVue ) {
